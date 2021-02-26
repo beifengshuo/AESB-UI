@@ -1,0 +1,17 @@
+.table-operate-wrap{ padding:10px 20px; }
+.table-search .ant-form-item{ margin-bottom: 10px; }
+.table-search .ant-collapse-borderless{ background-color: #fff; }
+
+.table-search  .ant-collapse-icon-position-right > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow{
+    right: calc(100% - 88px);
+    /* color:#c3c3c3; */
+}
+.table-search .ant-collapse-header{
+    border-bottom: 1px solid #e8e8e8;
+}
+.table-search  .ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box{
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+

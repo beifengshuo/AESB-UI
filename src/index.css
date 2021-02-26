@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+#root{height:100%;}
+
+/*css主要部分的样式*/
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+
+
+::-webkit-scrollbar {
+  width: 6px; /*对垂直流动条有效*/
+  height: 6px; /*对水平流动条有效*/
+  }
+  
+  /*定义滚动条的轨道颜色、内阴影及圆角*/
+  ::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);
+  background-color: rgba(0,0,0,.0.05);
+  /* border-radius: 3px; */
+  }
+  
+  
+  /*定义滑块颜色、内阴影及圆角*/
+  ::-webkit-scrollbar-thumb{
+  border-radius: 7px;
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);*/
+  /*background-color: #E8E8E8;*/
+  background-color:rgba(0,0,0,.2);
+  }
+  
+  /*定义两端按钮的样式*/
+  ::-webkit-scrollbar-button {
+  /* background-color:cyan; */
+  }
+  
+  /*定义右下角汇合处的样式*/
+  ::-webkit-scrollbar-corner {
+  background:khaki;
+  }
+
+
+.main-layout-content{
+  /*padding: 0px 10px 10px;*/
+  padding: 0 0 10px;
+}
+
+.main-center{
+  height: calc(100% - 34px);
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.ai-tab{
+  height: 100%;
+  overflow: auto;
+}
+
+
+.ant-tabs-content-holder{
+
+}
+
+.apusic-card{
+  width:100%;
+}
+.main-center .height-full{
+  height: 100%;
+  /*margin: 0 10px;
+  width: calc(100% - 20px);*/
+}
+.main-center>.apusic-form,.box-flex-column,
+.ant-tabs-tabpane>.ant-spin-nested-loading>.ant-spin-container,
+.ai-tab-panel, .ai-collapse
+
+{
+  width:100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.box-flex-grow-1,.box-flex-grow{
+  flex-grow:1;
+}
+.box-flex-grow-1{
+    width: calc(100% - 20px);
+    margin: 0 10px;
+}
+
+.ant-tabs-content,.ant-tabs-tabpane,.ant-spin-nested-loading,.ant-spin-container{
+  height: 100%;
+}
+
+
+.ant-modal-header{
+  padding: 0 24px;
+}
+.ant-modal-title{
+  line-height: 47px;
+  height: 47px;
+}
+
+.ant-tabs-tabpane .apusic-card{
+  box-shadow: none;
+}
+.ai-collapse .ant-collapse-item{
+    background-color: #fff;
+    margin-top: 10px;
+}

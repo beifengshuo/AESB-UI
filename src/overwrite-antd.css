@@ -1,0 +1,62 @@
+/*ant-breadcrumb */
+.ant-breadcrumb{margin: 0 0 0 20px !important;line-height: 34px;font-size: 12px;}
+.ant-breadcrumb-link{cursor: pointer;}
+.ant-breadcrumb span.has-link{ cursor: pointer; }
+.ant-breadcrumb > span:last-child .has-link:hover{ cursor: default; }
+.ant-breadcrumb > span:last-child .has-link:hover{ color: rgba(0, 0, 0, 0.85); }
+
+/* ant-table */
+  .ant-table-wrapper{ padding: 10px; background-color: #fff; }
+  
+  .ant-table-tbody > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td {
+    background: #F5FDFD;
+  }
+  .ant-table-tbody >tr.ant-table-placeholder:hover > td {
+    background:#fff !important;
+  }
+  
+  .ant-table-tbody > tr.ant-table-row-selected > td,
+  .ant-table-tbody > tr.ant-table-row-selected:hover > td{
+    background: #E9F9F9;
+  }
+  .ant-table-tbody > tr > td{
+    border-bottom: 1px solid #EBEBEB !important;
+  }
+  .ant-table-thead > tr > th{
+    background: #ebecf0 !important;
+    border-bottom: 1px solid #dcdee3 !important;
+  }
+  /*如果需要换成可伸缩列，则需要重新修改样式*/
+  .ant-table-thead .ant-table-cell{position: relative;}
+  .ant-table-thead .ant-table-cell:after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1px;
+    height: 20px;
+    margin-top: -10px;
+    background: #C7CBD3;
+  }
+  .ant-table-thead .ant-table-cell:last-child::after{
+    display: none;
+  }
+
+  .ant-empty-normal .ant-empty-image{ background: url('./assets/images/no-data.png') no-repeat center ; background-size: contain;    height: 60px;}
+  .ant-empty-image svg{ display: none; }
+  .ant-table.ant-table-small .ant-table-tbody .ant-table-wrapper:only-child .ant-table{  margin: -8px -8px -8px -8px;}
+
+
+  /* ant-pagination */
+.ant-table-pagination.ant-pagination{margin: 0 0 10px;}
+
+/* .ant-picker-range */
+.ant-picker-range{width: 100%;}
+/* .ant-collapse */
+.ant-collapse-borderless{ background-color:#fff; }
+.ant-collapse-header{ border-bottom: 1px solid #e8e8e8;}
+.ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box{
+  padding: 20px;
+  /* padding-bottom: 40px; */
+}

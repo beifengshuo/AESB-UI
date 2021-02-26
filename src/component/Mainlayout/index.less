@@ -1,0 +1,90 @@
+@import "../../assets/style/_variables.less";
+/* 头部 */
+.ant-layout-header{
+    height:58px;  
+    line-height: 58px;
+    padding: 0 20px;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(241, 241, 241);
+    .logo{
+        width: 140px;
+        height: 28px;
+        padding: 0;
+    }
+    img{
+        width: 100%;
+    }
+
+    .login-user,.logout{
+        cursor: pointer;
+        &>span{padding-right:4px;}
+    }
+   
+    .header-left>div{ display: inline-block; padding: 0 8px; }
+    .header-right{ text-align: right; }
+    .header-right>div{ display: inline-block; padding: 0 8px; }
+    
+}
+
+
+.ant-layout-sider{
+    // background: #5182b1;
+}
+.ant-layout-sider-has-trigger {
+    .ant-layout-sider-children{
+        height: 100%;
+        overflow: auto;
+    }
+}
+
+    
+
+.btn-realm-select{
+    .select-realm{
+        color: @apusic;
+    }
+    span:first-child{
+        width: 90%;
+        text-align: left;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+    }
+  }
+
+
+.select-realm{
+    color: @apusic;
+}
+.btn-realm-select span:first-child{
+    width: 90%;
+    text-align: left;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+}
+.btn-realm-select .anticon-caret-down{
+    color:#d8d8d8;
+}
+
+// 卡片
+.apusic-card{
+    border-radius:2px ;
+    background: #fff;
+    //border: 1px solid #e8e8e8;
+    box-shadow: 2px 2px 5px 0px #e6e5e5e8;
+    .apusic-card-headline{ padding: 0 20px; font-size: 16px; height:48px; line-height: 48px;border-bottom:1px solid #e8e8e8;}
+}
+.apusic-card + .apusic-card{margin-top: 10px;}
+  
+  
+// flex-布局
+.box-flex-grow-1,.box-flex-grow{
+    flex-grow:1;
+}
+.box-flex-grow-1{
+    // width: calc(100% - 20px);
+    margin: 0 10px;
+}
+
+

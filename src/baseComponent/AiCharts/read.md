@@ -1,0 +1,2 @@
+chart_type:类似于数据智脑的chart_type,一些图表组件的集合
+chart_tool:一些图表默认样式的所在地;

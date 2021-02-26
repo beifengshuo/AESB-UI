@@ -1,0 +1,9 @@
+管理
+http://192.168.2.243:8762/swagger-ui.html#
+
+运营
+http://192.168.2.243:8761/swagger-ui.html#
+
+
+集成
+http://192.168.2.243:8763/swagger-ui.html#
