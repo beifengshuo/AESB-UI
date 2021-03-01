@@ -8,18 +8,22 @@ import { Table } from 'antd';
 //     })
 // }
 
+
+
 const AiTable = (props)=>{
     const {paginationData,...restProps}=props;
-    const total = paginationData.total;
+    let pagination = false
+    if(paginationData){
 
-    const pagination = {
-        position: ['topRight'] ,
-        showSizeChanger:true,
-        pageSizeOptions:[5, 10, 20, 50],
-        pageSize : paginationData.pageSize,
-        current:paginationData.current,
-        total : paginationData.total,
-        showTotal:(total)=>{return `共 ${total} 条`;}
+        pagination = {
+            position: ['topRight'] ,
+            showSizeChanger:true,
+            pageSizeOptions:[5, 10, 20, 50],
+            pageSize : paginationData.pageSize,
+            current:paginationData.current,
+            total : paginationData.total,
+            showTotal:(total)=>{return `共 ${total} 条`;}
+        }
     }
 
     return(
