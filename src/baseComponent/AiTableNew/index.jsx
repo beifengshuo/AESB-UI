@@ -1,12 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
-
 const AiTable = (props)=>{
-    const {
-        paginationData,
-        tableScrollX="-",
-        ...restProps
-    }=props;
+    const {paginationData,...restProps}=props;
     let pagination = false
     if(paginationData){
 
@@ -24,12 +19,12 @@ const AiTable = (props)=>{
     return(
         <Table
             pagination={pagination}
-            size="small"  
-            scroll={{ y: 500,x: tableScrollX }}
-            // scroll={{ y: 500 }}
+            size="small"
+            scroll={{ y: 500 }}
             {...restProps}
         />
         
     )
 }
 export default AiTable;
+

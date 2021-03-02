@@ -16,10 +16,15 @@ const TableTemplate = (props)=>{
         getTableData,//获取表格列表
         children,
         searchParams={},//默认的搜索参数
+
+        tableScrollX,//表格宽度
+
+        dataTable,//测试
+        
     } = props;
     const initQueryInfo = {
-        current:1,
-        size:10,
+        page:1,
+        limit:10,
         params:searchParams,
     }//descs:["upd_time"] ,ascs:["upd_time"]
     
@@ -41,14 +46,15 @@ const TableTemplate = (props)=>{
         // type:'checkbox',
         // selectedRowKeys,
         onChange: (selectedRowKeys,selectedRows)=>{
+            // console.log("selectedRowKeys",selectedRowKeys)
+            // console.log("selectedRows",selectedRows)
             setSelectedRowKeys(selectedRowKeys);
             setSelectedRows(selectedRows)
             // setSelectedRowNames(getNameByIdFormDataSource(v[0]))
         },
-        getCheckboxProps:(record)=>{
-            return record;
-        }
-
+        // getCheckboxProps:(record)=>{//有副作用，待查验
+        //     return record;
+        // }
     };
 
     //处理排序的参数
@@ -70,10 +76,9 @@ const TableTemplate = (props)=>{
         const {action}=extra;
         if(action=="paginate"){
             const { current , pageSize }=pagination;
-            const new_query_info = {...queryInfo,current,size:pageSize};
+            const new_query_info = {...queryInfo,page:current,limit:pageSize};
             setQueryInfo(new_query_info);//
             getTableDataLocal(new_query_info);//获取表格数据
-
         }else if(action=="sort"){
             const new_query_info = handleSort(sorter,queryInfo);
             setQueryInfo(new_query_info);//
@@ -90,14 +95,21 @@ const TableTemplate = (props)=>{
         if(getTableData){
             setLoading(true);
             getTableData(params).then((res)=>{
+                console.log('params',params);
                 console.log('getTableData',res);
                 setDataSource({
-                    data:res.records,
+                    data:res.list,
                     total:res.total,
                 })
                 setLoading(false);
             }).catch(()=>{
                 setLoading(false);
+            })
+        }else{//测试
+            console.log("dataTable",dataTable)
+            setDataSource({
+                data:dataTable.list,
+                total:dataTable.total,
             })
         }
     }
@@ -108,7 +120,7 @@ const TableTemplate = (props)=>{
                 gettable:getTableDataLocal,
                 selectedkeys:selectedRowKeys,
                 selectedrows:selectedRows
-            }) 
+            })
         })     
     }
 
@@ -171,8 +183,6 @@ const TableTemplate = (props)=>{
                     <div className="table-search" >搜索区域</div> 
                 }
             </AiCard>
-
-
             <AiCard className="box-flex-grow-1">
                 <AiTable
                     rowSelection={rowSelection}
@@ -184,10 +194,11 @@ const TableTemplate = (props)=>{
                     paginationData={
                         {
                             total:dataSource.total,
-                            current:queryInfo.current,
-                            pageSize:queryInfo.size,
+                            current:queryInfo.page,
+                            pageSize:queryInfo.limit,
                         } 
                     }
+                    tableScrollX={tableScrollX}
                     // query={query}
                 />
                 {/* <div style={{padding:10}}>列表区域</div> */}

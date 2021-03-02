@@ -47,7 +47,7 @@ export const timeOptionDefault = [
 
 
 const FormItem = (props)=>{
-    const {item,style={width:'80%'}} = props;
+    const {item,style={width:'90%'}} = props;
    
     switch (item.type) {
         case "textArea":
@@ -67,6 +67,7 @@ const FormItem = (props)=>{
                     label={ formItemLable(item) }
                     name={item.name}
                     style={style}
+                    rules={item.rules?item.rules:[]}
                     // allowClear={true}
                     
                 >
@@ -86,7 +87,6 @@ const FormItem = (props)=>{
             }
             return(
                 <Form.Item 
-                  
                     label={ formItemLable(item) }
                     name={ item.name }
                     valuePropName="checked"

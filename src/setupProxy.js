@@ -6,8 +6,6 @@ module.exports = function(app) {
         createProxyMiddleware([
             "/api"
         ], {
-            //target: 'http://192.168.2.123:8765',//韩哥
-            // target: 'http://192.168.2.221:8765',
             target: 'http://192.168.2.243:8765',
             changeOrigin: true,
             // pathRewrite: {

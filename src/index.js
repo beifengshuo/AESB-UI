@@ -1,8 +1,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import reportWebVitals from './reportWebVitals';
+
+// 接口走mock
+import '@/mock' // 接口走mock
 
 import App from './App';
 import './index.css';
@@ -18,6 +20,8 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
+
+
 
 ReactDOM.render(
   <Provider store={store}>
