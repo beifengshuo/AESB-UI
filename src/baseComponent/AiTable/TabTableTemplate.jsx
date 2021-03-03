@@ -4,8 +4,10 @@ import {Space,Button ,Form,Row,Col,Input} from 'antd';
 import AiCard from '@/baseComponent/AiCard';
 import AiTable from '@/baseComponent/AiTable';
 import QureyFilter from './QureyFilter';
+import AiTab from '@/baseComponent/AiTab';
+
 import './index.css';
-const TableTemplate = (props)=>{
+const TabTableTemplate = (props)=>{
     const {
         title,
         columns,
@@ -130,81 +132,14 @@ const TableTemplate = (props)=>{
     },[]);
 
     const RefQureyFilterForm = useRef();
-   
+    const panes=[
+        { title: '本地队列', content: 'Content of Tab 1', key: '1' },
+        { title: '队列详细信息', content: 'Content of Tab 2', key: '2' }, 
+    ]
     return (
         <>
-            <AiCard title={title}>
-                <div className="table-operate-wrap">
-                    <div className="table-button" >
-                        <Space align="center">
-                            {
-                                renderButtonChildren()
-                            }
-                            {
-                                Array.isArray(buttons) && 
-                                buttons.map((button)=>{
-                                    return<Button type="primary" key={button.key} disabled={true}>{button.title}</Button>
-                                })
-                            }
-                            {
-                                Array.isArray(searchs) &&
-                                <>
-                                    <Button type="primary" onClick={()=>{ RefQureyFilterForm.current.submit(); }}>查询</Button>
-                                    <Button type="primary" onClick={()=>{ 
-                                        const { params , ...rest }=queryInfo;
-                                        const new_query_info = {...rest,params:{}};
-                                        setQueryInfo(new_query_info);
-                                        RefQureyFilterForm.current.reset(); 
-                                    }}>重置</Button>
-                                </>   
-                            }
-                        </Space>
-                    </div>
-                </div>
-            </AiCard>
-            <AiCard style={{width:'calc(100% - 20px)',marginLeft:'10px'}}>
-                {
-                    Array.isArray(searchs) ? 
-                    <div className="table-search">
-
-
-                        <QureyFilter searchs={searchs} cRef={RefQureyFilterForm} 
-                            initFormData={searchParams}
-                            onFinishFun={(v)=>{
-                                const { params , ...rest }=queryInfo;
-                                const new_query_info = {...rest,params:v};
-                                setQueryInfo(new_query_info);//
-                                getTableDataLocal(new_query_info);//获取表格数据
-                            }}
-                        /> 
-
-
-                    </div>
-                    :
-                    <div className="table-search" >搜索区域</div> 
-                }
-            </AiCard>
-            <AiCard className="box-flex-grow-1">
-                <AiTable
-                    rowSelection={rowSelection}
-                    loading={loading}
-                    dataSource={dataSource.data}
-                    columns={columns}
-                    rowKey="id"
-                    onChange={handleTableChange}
-                    paginationData={
-                        {
-                            total:dataSource.total,
-                            current:queryInfo.page,
-                            pageSize:queryInfo.limit,
-                        } 
-                    }
-                    tableScrollX={tableScrollX}
-                    // query={query}
-                />
-                {/* <div style={{padding:10}}>列表区域</div> */}
-            </AiCard>
+            <AiTab panes={panes} />
         </>
     )
 }
-export default TableTemplate;
+export default TabTableTemplate;

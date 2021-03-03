@@ -6,6 +6,13 @@ import serviceRegistryAPI from './serviceManagement/serviceRegistry';
 import systemRegistryAPI from './serviceManagement/systemRegistry';
 import serviceAgentAPI from './serviceManagement/serviceAgent';
 
+import localQueueAPI from './systemResource/queue/local';
+import remoteQueueAPI from './systemResource/queue/remote';
+import deadLetterQueueAPI from './systemResource/queue/deadLetter';
+import transmissionQueueAPI from './systemResource/queue/transmission';
+import templateQueueAPI from './systemResource/queue/template';
+
+
 // 设置全局延时 没有延时的话有时候会检测不到数据变化 建议保留
 Mock.setup({
     timeout: 300
@@ -24,6 +31,13 @@ Mock.mock(/\/api\/serviceRegistry\/updateService/, 'get', serviceRegistryAPI.upd
 
 //系统注册中心
 Mock.mock(/\/api\/systemRegistry\/getList/, 'get', systemRegistryAPI.getList);
-
 //服务代理
 Mock.mock(/\/api\/serviceAgent\/getList/, 'get', serviceAgentAPI.getList);
+
+//队列
+Mock.mock(/\/api\/systemResource\/localQueue\/getList/, 'get', localQueueAPI.getList);
+Mock.mock(/\/api\/systemResource\/remoteQueue\/getList/, 'get', remoteQueueAPI.getList);
+Mock.mock(/\/api\/systemResource\/deadLetterQueue\/getList/, 'get', deadLetterQueueAPI.getList);
+Mock.mock(/\/api\/systemResource\/transmissionQueue\/getList/, 'get', transmissionQueueAPI.getList);
+Mock.mock(/\/api\/systemResource\/templateQueue\/getList/, 'get', templateQueueAPI.getList);
+
