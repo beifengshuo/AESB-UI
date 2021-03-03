@@ -1,13 +1,6 @@
 import Mock from 'mockjs';
-
-export const param2Obj = url => {
-    const search = url.split('?')[1]
-    if (!search) {
-      return {}
-    }
-    return JSON.parse('{"' + decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
-}
-
+import {param2Obj} from '../mUtils';
+//服务注册
 let List = []
 const count = 60
 let typelist = [ "WEBSERVICE", "HTTP" ]	;
@@ -96,20 +89,40 @@ export default {
       }
     },
 
-    /* 批量删除 */
-    batchremoveMoney: config => {
-      console.log(config);
-      // console.log(param2Obj(config.url));
-      let { ids } = param2Obj(config.url)
-      console.log(ids);
-      ids = ids.split(',')
-      List = List.filter(u => !ids.includes(u.id))
+
+    /*** 删除用户deleteMoney */
+  deleteMoney: config => {
+    const { id } = mUtils.param2Obj(config.url)
+    if (!id) {
+      return {
+        code: -999,
+        message: '参数不正确'
+      }
+    } else {
+      List = List.filter(u => u.id !== id)
       return {
         code: 200,
         data: {
-          message: '批量删除成功'
+          message: '删除成功'
         }
       }
-    },
+    }
+  },
+  /* 批量删除 */
+ 
+  batchremoveMoney: config => {
+    console.log(config);
+    // console.log(mUtils.param2Obj(config.url));
+    let { ids } = mUtils.param2Obj(config.url)
+    console.log(ids);
+    ids = ids.split(',')
+    List = List.filter(u => !ids.includes(u.id))
+    return {
+      code: 200,
+      data: {
+        message: '批量删除成功'
+      }
+    }
+  },
   
 }

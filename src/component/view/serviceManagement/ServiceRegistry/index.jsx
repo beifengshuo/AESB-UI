@@ -1,8 +1,6 @@
 import React,{useState,useEffect} from "react";
 import TableTemplate from '@/baseComponent/AiTable/TableTemplate';
-
 import { getserviceList } from "@/api/serviceManagement/serviceRegistry";
-
 import AddService from './AddService';
 import EditService from './EditService';
 import DeleteService from './DeleteService';
@@ -12,8 +10,9 @@ const ServiceRegistry = ()=>{
     // console.log("ViewDiolog",ViewDiolog);
     
     const columns=[
+        
+        { title: '接口名称', dataIndex: 'name', key:'name', width:160,ellipsis:true,fixed:'left'},
         { title: '接口编码', dataIndex: 'code', key:'code', width:100 },
-        { title: '接口名称', dataIndex: 'name', key:'name', width:160,ellipsis:true},
         { title: '接口地址', dataIndex: 'url', key:'url', width:240},
 
         { title: '目标格式', dataIndex: 'target', key:'target',width:80, render: text =><EditService.ViewDialog text={text} title="目标格式"/> , align:'center' },

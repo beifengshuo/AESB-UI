@@ -17,7 +17,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel , title,children,ini
     const [form] = Form.useForm();
 
     useEffect(()=>{ 
-      if( visible && initialValues && initialValues.id){//控制编辑页面下，数据的回显 
+      if( visible && initialValues ){//控制编辑页面下，数据的回显 
         console.log('initialValues',initialValues)
         form.setFieldsValue(initialValues)
       }

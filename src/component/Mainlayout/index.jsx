@@ -6,10 +6,7 @@ import classnames from "classnames";
 import {menu_data as sider_menu_list} from './menu_data';
 import {menu_comp_data as comp_data} from './menu_comp_data';//页面组件集合
 import './index.less'
-// import {loginOut} from '@/api/login';
-// import {MessageComp , ModalComp} from '@/baseComponent/PromptComp';
-// import {ContentRouter} from '@/RootRouter';
-// import IntegrateHome from '@/component/integrate/Home';
+
 
 const IconFont = createFromIconfontCN({
     scriptUrl: 'ali_font_icon.js',//只需引入js,路径在public下，从阿里图标symbol中js,不是下载之后的，图标可在assets中查看，此方式正在试用中，如不方便使用，可更换其他方式   
@@ -19,6 +16,7 @@ const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 const Topics = (props) => {
+   
     const {
         slelct_menu={
             key:"首页",
@@ -26,7 +24,6 @@ const Topics = (props) => {
             breadcrumb:[{name:"首页",comp:"Home"}],
         },
         collapsed,
-
 
         setSelectMenu,//设置选中菜单
         setCollapsed,//设置菜单收缩

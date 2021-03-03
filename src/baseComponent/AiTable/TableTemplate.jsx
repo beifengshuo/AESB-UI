@@ -45,6 +45,7 @@ const TableTemplate = (props)=>{
     const rowSelection = {
         // type:'checkbox',
         // selectedRowKeys,
+        fixed:true,
         onChange: (selectedRowKeys,selectedRows)=>{
             // console.log("selectedRowKeys",selectedRowKeys)
             // console.log("selectedRows",selectedRows)
@@ -105,7 +106,7 @@ const TableTemplate = (props)=>{
             }).catch(()=>{
                 setLoading(false);
             })
-        }else{//测试
+        }else if(dataTable){//测试
             console.log("dataTable",dataTable)
             setDataSource({
                 data:dataTable.list,

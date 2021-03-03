@@ -3,6 +3,8 @@ import menuAPI from './menu';
 import loginAPI from './login';
 
 import serviceRegistryAPI from './serviceManagement/serviceRegistry';
+import systemRegistryAPI from './serviceManagement/systemRegistry';
+import serviceAgentAPI from './serviceManagement/serviceAgent';
 
 // 设置全局延时 没有延时的话有时候会检测不到数据变化 建议保留
 Mock.setup({
@@ -19,3 +21,9 @@ Mock.mock(/\/menus\/get/, 'get', menuAPI.getMenuList);
 Mock.mock(/\/api\/serviceRegistry\/getList/, 'get', serviceRegistryAPI.getserviceList);
 Mock.mock(/\/api\/serviceRegistry\/createService/, 'get', serviceRegistryAPI.createService);
 Mock.mock(/\/api\/serviceRegistry\/updateService/, 'get', serviceRegistryAPI.updateService);
+
+//系统注册中心
+Mock.mock(/\/api\/systemRegistry\/getList/, 'get', systemRegistryAPI.getList);
+
+//服务代理
+Mock.mock(/\/api\/serviceAgent\/getList/, 'get', serviceAgentAPI.getList);
