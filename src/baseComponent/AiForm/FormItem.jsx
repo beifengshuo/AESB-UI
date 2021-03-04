@@ -56,6 +56,7 @@ const FormItem = (props)=>{
                     label={ formItemLable(item) }
                     name={item.name}
                     style={style}
+                    rules={item.rules?item.rules:[]}
                 >
                    <Input.TextArea />
                 </Form.Item>
@@ -90,6 +91,7 @@ const FormItem = (props)=>{
                     label={ formItemLable(item) }
                     name={ item.name }
                     valuePropName="checked"
+                    style={style}
                 >
                     <Switch onChange={handleSwitch}/>
                 </Form.Item>
@@ -135,6 +137,7 @@ const FormItem = (props)=>{
                     name={item.name} 
                     rules={item.rules?item.rules:[]}
                     label={ formItemLable(item) }
+                    style={style}
                 >
                     <InputNumber  min={item.min} style={{width:'100%'}}/>
                 </Form.Item>
@@ -146,6 +149,7 @@ const FormItem = (props)=>{
                     name={item.name} 
                     rules={item.rules?item.rules:[]}
                     label={ formItemLable(item) }
+                    style={style}
                 >
                     <Input.Password placeholder={item.placeholder} />
                 </Form.Item>

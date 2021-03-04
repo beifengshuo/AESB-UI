@@ -7,6 +7,8 @@ import systemRegistryAPI from './serviceManagement/systemRegistry';
 import serviceAgentAPI from './serviceManagement/serviceAgent';
 
 import localQueueAPI from './systemResource/queue/local';
+import localQueueInfoAPI from './systemResource/queue/localInfo';
+
 import remoteQueueAPI from './systemResource/queue/remote';
 import deadLetterQueueAPI from './systemResource/queue/deadLetter';
 import transmissionQueueAPI from './systemResource/queue/transmission';
@@ -36,6 +38,9 @@ Mock.mock(/\/api\/serviceAgent\/getList/, 'get', serviceAgentAPI.getList);
 
 //队列
 Mock.mock(/\/api\/systemResource\/localQueue\/getList/, 'get', localQueueAPI.getList);
+Mock.mock(/\/api\/systemResource\/localQueue\/getInfoList/, 'get', localQueueInfoAPI.getList);
+
+
 Mock.mock(/\/api\/systemResource\/remoteQueue\/getList/, 'get', remoteQueueAPI.getList);
 Mock.mock(/\/api\/systemResource\/deadLetterQueue\/getList/, 'get', deadLetterQueueAPI.getList);
 Mock.mock(/\/api\/systemResource\/transmissionQueue\/getList/, 'get', transmissionQueueAPI.getList);

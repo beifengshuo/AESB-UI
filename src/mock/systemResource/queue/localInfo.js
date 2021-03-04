@@ -1,39 +1,28 @@
 import Mock from 'mockjs';
 import {param2Obj} from '@/mock/mUtils';
-//服务注册
+//本地队列
 let List = []
 const count = 60
 let typelist = [ "WEBSERVICE", "HTTP" ]	;
 for (let i = 0; i < count; i++) {
   List.push(Mock.mock({
-    id: Mock.Random.guid(),
-    createTime: Mock.Random.datetime(),
-    updateTime:Mock.Random.datetime(),
-    creator:Mock.Random.cname(),
-    updator:Mock.Random.cname(),
-    
-    url:Mock.Random.url(),
-    linkEmail:Mock.Random.email(),
-    'overTime|1':[10,30,60,200,1000],
-    'overTime2|1':[10,30,60,200,1000],
-    // overTime:Mock.Random.float(0, 9999, 2,2),
-    // overTime2:Mock.Random.float(-5999, 0, 2,2),
-    "remark|1-10": "备注",
-    'isLog|1': [false,true],  
-    "name|1-10": "名称",
-    'code': `${1000+i}`,
-    "type|1": typelist,
-    "res|1-100": "resabv",
-    "target|1-100": "targetabv",
-    "space|1-5": "命名空间",
-    WS:"",
+    "messageId": Mock.Random.guid(),
+    "messageDestination": "testQueue@AESB",
+    "messageType|1":['TextMessage'],
+    "sendTime": 1614839855404,
+    "messageContent|1-10": "内容",
+    //time: Mock.Random.datetime(),
+
+    // messageContent: "1111"
+    // messageDestination: "testQueue@AESB"
+    // messageId: "ID:922e5074-292e-4475-bfe2-2ff1ce662b1b"
+    // messageType: "TextMessage"
+    // sendTime: 1614839855404
   }))
 }
-
 export default {
-    
-/* 获取列表getMoneyList*/
-getList: config => {
+    /* 获取列表本地队列列表*/
+    getList: config => {
         const { name, page = 1, limit = 20 } = param2Obj(config.url)
         // console.log(param2Obj(config.url))
         // console.log(page+"++"+limit)

@@ -14,9 +14,9 @@ import CDC from '../view/systemResource/CDC';
 import Flashback from '../view/systemResource/Flashback';
 import DataSource from '../view/systemResource/DataSource';
 import LocalPool from '../view/systemResource/filepool/LocalPool';//文件池
-import RemotePool from '../view/systemResource/filepool/RemotePool';
+import RemotePool from '../view/systemResource/filepool/RemotePool';//远程池的添加跳页面
 
-import DeadLetterQueue from '../view/systemResource/queue/DeadLetterQueue';//队列
+import DeadLetterQueue from '../view/systemResource/queue/DeadLetterQueue';//队列 有tab
 import LocalQueue from '../view/systemResource/queue/LocalQueue';
 import RemoteQueue from '../view/systemResource/queue/RemoteQueue';
 import TemplateQueue from '../view/systemResource/queue/TemplateQueue';

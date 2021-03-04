@@ -1,14 +1,27 @@
 import React from "react";
-import AiCard from '@/baseComponent/AiCard';
+import TabTemplate from '@/baseComponent/AiTab/TabTemplate';
+import Detail from './Detail';
+import QuieueList from './QuieueList';
+const comp_data ={
+    Detail,
+    QuieueList,
+}
 const RemoteQueue = ()=>{
+    const fixed_tab ={ 
+        title: '远程队列', 
+        comp:"QuieueList",
+    }
+    const add_pane= { 
+        title_suffix: `详细信息`,
+        tab_key: 'queueName', 
+        comp:"Detail",//必填   
+    }
     return (
         <>
-            <AiCard title="远程队列">
-                <div style={{padding:20}}>操作区域</div>
-            </AiCard>
-            <AiCard className="box-flex-grow-1">
-                <div style={{padding:10}}>列表区域</div>
-            </AiCard>
+          <TabTemplate 
+            comp_data={comp_data} 
+            fixed_tab={fixed_tab} 
+            add_pane={add_pane}/>
         </>
     )
 }

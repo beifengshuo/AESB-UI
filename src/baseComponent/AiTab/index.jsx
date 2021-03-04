@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import AiCard from '@/baseComponent/AiCard';
 import { Tabs } from 'antd';
-import './index.less';
+// import './index.less';
 const { TabPane } = Tabs;
 const Tab = (props) => {
 
@@ -23,8 +23,6 @@ const Tab = (props) => {
     }
 
  
-
-   
     const defaultActiveKey = panes[0].key;
 
     return (

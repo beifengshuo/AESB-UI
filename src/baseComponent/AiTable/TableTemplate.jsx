@@ -20,8 +20,10 @@ const TableTemplate = (props)=>{
         tableScrollX,//表格宽度
 
         dataTable,//测试
+        rowKey="id",
         
     } = props;
+    // console.log("rowKey",rowKey);
     const initQueryInfo = {
         page:1,
         limit:10,
@@ -164,7 +166,12 @@ const TableTemplate = (props)=>{
             </AiCard>
             <AiCard style={{width:'calc(100% - 20px)',marginLeft:'10px'}}>
                 {
-                    Array.isArray(searchs) ? 
+                    Array.isArray(searchs) && searchs.length==0
+                    ?
+                    <div className="table-search">搜索区域</div>
+                    :
+                    Array.isArray(searchs) && searchs.length>0
+                    ?
                     <div className="table-search">
 
 
@@ -177,11 +184,9 @@ const TableTemplate = (props)=>{
                                 getTableDataLocal(new_query_info);//获取表格数据
                             }}
                         /> 
-
-
                     </div>
                     :
-                    <div className="table-search" >搜索区域</div> 
+                    null 
                 }
             </AiCard>
             <AiCard className="box-flex-grow-1">
@@ -190,7 +195,7 @@ const TableTemplate = (props)=>{
                     loading={loading}
                     dataSource={dataSource.data}
                     columns={columns}
-                    rowKey="id"
+                    rowKey={rowKey}
                     onChange={handleTableChange}
                     paginationData={
                         {
