@@ -92,7 +92,7 @@ export default {
 
     /*** 删除用户deleteMoney */
   deleteMoney: config => {
-    const { id } = mUtils.param2Obj(config.url)
+    const { id } = param2Obj(config.url)
     if (!id) {
       return {
         code: -999,
@@ -112,8 +112,8 @@ export default {
  
   batchremoveMoney: config => {
     console.log(config);
-    // console.log(mUtils.param2Obj(config.url));
-    let { ids } = mUtils.param2Obj(config.url)
+    // console.log(param2Obj(config.url));
+    let { ids } = param2Obj(config.url)
     console.log(ids);
     ids = ids.split(',')
     List = List.filter(u => !ids.includes(u.id))
