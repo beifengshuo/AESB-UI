@@ -1,46 +1,72 @@
 import React from "react";
-import AiCard from '@/baseComponent/AiCard';
-// import TableTemplate from '@/baseComponent/AiTable/TableTemplate';
-const DataSource = ()=>{
-    // const columns=[
-    //     //{ title: '序号', dataIndex: '1', key:'1' },
-    //     { title: '数据源名', dataIndex: 'code', key:'code' },
-    //     { title: 'JNDI名', dataIndex: '1', key:'1' },
-    //     { title: '数据库类型', dataIndex: '2', key:'2' },
-    //     { title: 'URL', dataIndex: '3', key:'3' },
-    //     { title: 'Schema', dataIndex: '4', key:'4' },
-    //     { title: '测试连接', dataIndex: '5', key:'5' ,}
-    // ]
+import TableTemplate from '@/baseComponent/AiTable/TableTemplate';
+import { PaperClipOutlined } from '@ant-design/icons';
+import { Button, notification, Divider, Space } from 'antd';
 
-    // const buttons=[
-    //     // { title: '部署', key:"1" },
-    //     // { title: '启动', key:"2" },
-    //     // { title: '停止', key:"3" },
-    //     // { title: '卸载', key:"4" },
-    //     { title: '测试连接', key:"5" },
-    // ]
-   
-    // const searchs=[
-    //     {label:'数据源名称：', name:'code' },
-    //     {label:'数据库类型', name:'name'}, //下拉框
-    // ]
+const TestConnect = ({record})=>{
+    const openNotification = placement => {
+        notification.success({
+          message: `提示`,
+          description:  `数据源 ${record.dsName}测试连接成功`,
+          placement,
+        });
+      };
+    return(
+        <Button type="link" onClick={() => openNotification('bottomRight')}>
+            <PaperClipOutlined/>
+        </Button>
+    )
+}
+const DataSource = ()=>{
+    const columns=[ 
+        { title: '数据源名', dataIndex: 'dsName', key:'dsName',ellipsis:true, },
+        { title: 'JNDI名', dataIndex: 'jndiName', key:'jndiName',ellipsis:true, },
+        { title: '数据库类型', dataIndex: 'dbType', key:'dbType',ellipsis:true, },
+        { title: 'URL', dataIndex: 'url', key:'url',ellipsis:true, },
+        { title: 'Schema', dataIndex: 'schema', key:'schema',ellipsis:true, },
+        { title: '测试连接', dataIndex: 'testConnect', key:'testConnect', render:(text,record)=><TestConnect record={record}/>,align:'center'}
+    ]
+    const searchs=[
+        {label:'数据源名称：', name:'dsName' },
+        {
+            label:'数据库类型', 
+            name:'dbType',
+            type:'select',
+            option:[
+                {label:'MYSQL',value:'MYSQL'}
+            ],
+            // option:'datasource!getDBTypes.action',
+
+        }, //下拉框
+    ]
+    const dataTable={
+        list:[
+            {
+                id:'2',
+                dbType: "MYSQL",
+                dsName: "esb_db",
+                jndiName: "JNDI/esb_db",
+                schema: "root",
+                url: "jdbc:mysql://192.168.2.104:3306/test?serverTimezone=UTC",
+            }
+        ],
+        
+        
+        total:1,
+    }
+  
     return (
         <>
-             {/* <TableTemplate 
+             <TableTemplate 
                 title="数据源"
-                buttons={buttons}
+                // buttons={buttons}
                 searchs={searchs}
                 columns={columns}
+                dataTable={dataTable}
                 // searchParams={{approveStatus:1}}
                 // getTableData={(data)=>getTenantApplyList(data)}//1(表示未审批),2(表示已审批)
             >
-            </TableTemplate> */}
-            <AiCard title="数据源">
-                <div style={{padding:20}}>操作区域</div>
-            </AiCard>
-            <AiCard className="box-flex-grow-1">
-                <div style={{padding:10}}>列表区域</div>
-            </AiCard>
+            </TableTemplate>
         </>
     )
 }

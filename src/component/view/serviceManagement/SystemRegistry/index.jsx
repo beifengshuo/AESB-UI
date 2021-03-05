@@ -1,4 +1,3 @@
-// 租户审批
 import React from "react";
 import TableTemplate from '@/baseComponent/AiTable/TableTemplate';
 import { getList } from "@/api/serviceManagement/systemRegistry";
