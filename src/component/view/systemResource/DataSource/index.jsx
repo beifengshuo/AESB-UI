@@ -50,8 +50,6 @@ const DataSource = ()=>{
                 url: "jdbc:mysql://192.168.2.104:3306/test?serverTimezone=UTC",
             }
         ],
-        
-        
         total:1,
     }
   

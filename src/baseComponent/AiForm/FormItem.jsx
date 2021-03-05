@@ -92,6 +92,7 @@ const FormItem = (props)=>{
                     name={ item.name }
                     valuePropName="checked"
                     style={style}
+                    rules={item.rules?item.rules:[]}
                 >
                     <Switch onChange={handleSwitch}/>
                 </Form.Item>
@@ -180,7 +181,7 @@ const FormItem = (props)=>{
                 </Form.Item>
             )
             break;
-    } 
+    }
     
 }
 

@@ -27,7 +27,7 @@ const TabTemplate = ({comp_data,fixed_tab,add_pane})=>{
         }else{//添加
 
             const new_add_pane= { 
-                title: `${row.queueName}${title_suffix}`,
+                title: `${new_activeKey}${title_suffix}`,
                 key: new_activeKey, 
                 closable: true,
                 comp,  
