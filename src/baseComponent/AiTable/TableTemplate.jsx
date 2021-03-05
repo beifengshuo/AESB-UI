@@ -10,7 +10,7 @@ const TableTemplate = (props)=>{
         title,
         columns,
         buttons,//按钮
-        buttonComponents,
+        // buttonComponents,
         searchs,//搜索条件
 
         getTableData,//获取表格列表

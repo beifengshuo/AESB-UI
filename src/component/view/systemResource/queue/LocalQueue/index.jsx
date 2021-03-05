@@ -1,6 +1,6 @@
-import React,{useState} from "react";
+import React from "react";
 import TabTemplate from '@/baseComponent/AiTab/TabTemplate';
-import Detail from './Detail';
+import Detail from '../Detail';
 import QuieueList from './QuieueList';
 const comp_data ={
     Detail,
@@ -21,8 +21,7 @@ const LocalQueue = ()=>{
           <TabTemplate 
             comp_data={comp_data} 
             fixed_tab={fixed_tab} 
-            add_pane={add_pane}/>
-            
+            add_pane={add_pane}/>  
         </>
     )
 }

@@ -11,10 +11,10 @@ const SendMsg = ()=>{
         setVisible(false);
     };
     const initFormData={
-        // cacheSize:64,//需要注意
-        // depth:5000,
-        // volume:512000,
-        // maxMessageSize:4194304
+        cacheSize:64,//需要注意
+        depth:5000,
+        volume:512000,
+        maxMessageSize:4194304
     }   
     return (
         <>

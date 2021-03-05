@@ -1,6 +1,6 @@
 import React from "react";
 import TabTemplate from '@/baseComponent/AiTab/TabTemplate';
-import Detail from './Detail';
+import Detail from '../Detail';
 import QuieueList from './QuieueList';
 const comp_data ={
     Detail,

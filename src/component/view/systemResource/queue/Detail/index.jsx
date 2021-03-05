@@ -13,7 +13,7 @@ const Detail = ({ tab_key })=>{//target 需要改成 对象形式
         { title: '消息内容', dataIndex: 'messageContent', key:'messageContent'},
     ]
     const buttons=[
-        // { title: '清空', key:"1" },
+        { title: '清空', key:"1" },
         // { title: '发送消息', key:"2" },
         // { title: '删除', key:"3" },
     ]
@@ -26,7 +26,7 @@ const Detail = ({ tab_key })=>{//target 需要改成 对象形式
             // title="队列详细信息"
             rowKey={"messageId"}
         >
-            <Button type="primary" disabled={true}>清空</Button>
+            {/* <Button type="primary" disabled={true}>清空</Button> */}
             <SendMsg queueName = { tab_key }/>
             <DefaultDelete/>
         </TableTemplate>

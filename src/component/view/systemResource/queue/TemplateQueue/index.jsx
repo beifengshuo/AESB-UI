@@ -1,14 +1,21 @@
 import React from "react";
-import AiCard from '@/baseComponent/AiCard';
+import TabTemplate from '@/baseComponent/AiTab/TabTemplate';
+import QuieueList from './QuieueList';
+const comp_data ={
+    QuieueList,
+}
 const TemplateQueue = ()=>{
+    const fixed_tab ={ 
+        title: '模板队列', 
+        comp:"QuieueList",
+    }
     return (
         <>
-            <AiCard title="模板队列">
-                <div style={{padding:20}}>操作区域</div>
-            </AiCard>
-            <AiCard className="box-flex-grow-1">
-                <div style={{padding:10}}>列表区域</div>
-            </AiCard>
+            <TabTemplate 
+                comp_data={comp_data} 
+                fixed_tab={fixed_tab} 
+                add_pane={{}}
+            />  
         </>
     )
 }
