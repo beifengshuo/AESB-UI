@@ -21,6 +21,7 @@ const Topics = (props) => {
         slelct_menu={
             key:"首页",
             comp:"Home",
+            openKeys:[""],
             breadcrumb:[{name:"首页",comp:"Home"}],
         },
         collapsed,
@@ -49,9 +50,10 @@ const Topics = (props) => {
     //点击菜单
     const handleClickMenuItem = (data)=>{
         const item_props = data.item.props;
-        const { name,comp,eventKey,breadcrumb } = item_props;
+        const { name,comp,eventKey,breadcrumb,openKeys } = item_props;
         setSelectMenu({
             key:eventKey,
+            openKeys,
             name,
             comp,
             breadcrumb: breadcrumb || [] ,
@@ -68,12 +70,12 @@ const Topics = (props) => {
     const renderMenu = data => data.map((ele , index)=>{//菜单的icon需要修改传入方式 
         if(Array.isArray(ele.children)&& ele.children.length > 0 ){
             return (
-                <SubMenu key={ele.name}   title={ele.name}>
+                <SubMenu key={ele.name}   title={ele.name} icon={ele.icon}>
                     { renderMenu(ele.children) }  
                 </SubMenu>
             )
         }else{
-            return <Menu.Item key={ele.key } breadcrumb={ele.breadcrumb_path} comp={ele.comp} name={ele.name}>{ele.name}</Menu.Item>
+            return <Menu.Item key={ele.key } breadcrumb={ele.breadcrumb_path} icon={ele.icon} comp={ele.comp} name={ele.name}>{ele.name}</Menu.Item>
         }
     })
    
@@ -105,8 +107,8 @@ const Topics = (props) => {
                 </Header>
                 <Layout>
                     <Sider  
-                    collapsible
-                     collapsed={collapsed} onCollapse={()=>setCollapsed(!collapsed)} 
+                        collapsible
+                        collapsed={collapsed} onCollapse={()=>setCollapsed(!collapsed)} 
                             trigger={
                                 (!collapsed)
                                 ?
@@ -121,6 +123,10 @@ const Topics = (props) => {
                                     theme="dark"
                                     onClick={handleClickMenuItem}
                                     selectedKeys={slelct_menu["key"]}
+                                    onOpenChange={(openKeys)=>{
+                                        setSelectMenu({...slelct_menu,openKeys});
+                                    }}
+                                    openKeys={slelct_menu["openKeys"]}
                                     // style={{height:'100%',background:"pink"}}
                                 >
                                     {

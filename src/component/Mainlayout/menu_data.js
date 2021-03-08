@@ -28,7 +28,7 @@ export const menu_data=[
     {
         name:"服务管理",
         key:"服务管理",
-        icon:<HomeOutlined />,
+        icon:<AppstoreAddOutlined />,
         children:[
             {
                 name:'系统注册中心', key:"系统注册中心", url:`/general`,comp:"SystemRegistry", 
@@ -85,7 +85,7 @@ export const menu_data=[
     {
         name:"系统资源",
         key:"系统资源",
-        icon:<IconFont type="icon1home" />,
+        icon:<TeamOutlined />,
         children:[
             {
                 name:'触发器' , key:"Trigger", url:`/cache-settings`,comp:"Trigger",
@@ -224,7 +224,7 @@ export const menu_data=[
     {
         name:"日志管理",
         key:"日志管理",
-        icon:<IconFont type="icon1home" />,
+        icon:<FileProtectOutlined />,
         children:[
             {name:'业务日志监控', key:"业务日志监控", url:`/general`},
             {name:'系统监控' , key:"系统监控", url:`/cache-settings`},
@@ -258,7 +258,7 @@ export const menu_data=[
     {
         name:"系统管理",
         key:"系统管理",
-        icon:<IconFont type="icon1home" />,
+        icon:<SecurityScanOutlined />,
         children:[
             {
                 name:'集群服务器管理', key:"集群服务器管理", url:`/general`,comp:"ClusterServer",

@@ -6,6 +6,7 @@ const initState = {
     slelct_menu:{//设置选中的菜单
         key:"首页",
         comp:"Home",
+        openKeys:[""],
         breadcrumb:[{name:"首页",comp:"Home"}],
     },
     collapsed:false, //菜单的收缩展开
@@ -23,6 +24,7 @@ const MainLayoutReducer = (state = initState , action) => {
         });
         case SET_SELECT_MENU ://设置选中的菜单
             return  Object.assign({} , state , {
+               
                 slelct_menu:action.payload
         });
         default :
