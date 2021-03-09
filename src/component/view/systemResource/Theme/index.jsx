@@ -21,7 +21,6 @@ const Theme = ()=>{
         tab_key: 'AddTheme', 
         comp:"AddTheme",//必填   
     }
-
     const edit_pane= { 
         title_suffix: `编辑`,
         tab_key: 'topicName', //每条数据的值

@@ -2,6 +2,8 @@ import React from "react";
 import TableTemplate from '@/baseComponent/AiTable/TableTemplate';
 import AiButton from '@/baseComponent/AiButton';
 import {message} from 'antd';
+import SendMsg from './SendMsg'
+
 const ThemeList = (props)=>{
 
     const { addTab, colseTab } = props; 
@@ -14,7 +16,8 @@ const ThemeList = (props)=>{
     const buttons=[
         // { title: '新增', key:"1" },
         // { title: '编辑', key:"2" },
-        // { title: '删除', key:"3" },
+        { title: '发送消息', key:"3" },
+        { title: '删除', key:"3" },
         { title: '启动', key:"4" },
         { title: '停止', key:"5" },
     ]
@@ -56,7 +59,7 @@ const ThemeList = (props)=>{
     return (
         <>
             <TableTemplate
-                title="主题"
+                // title="主题"
                 buttons={buttons}
                 // searchs={searchs}
                 // searchParams={{approveStatus:1}}
@@ -77,6 +80,7 @@ const ThemeList = (props)=>{
                     }
                     addTab("edit",selectedrows[0])
                 }} >编辑</AiButton>
+                <SendMsg/>
             </TableTemplate>
           
         </>

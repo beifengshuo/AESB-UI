@@ -46,11 +46,12 @@ const TableTemplate = (props)=>{
     //选择框的样式和事件
     const rowSelection = {
         // type:'checkbox',
-        // selectedRowKeys,
+        selectedRowKeys,
         fixed:true,
         onChange: (selectedRowKeys,selectedRows)=>{
-            // console.log("selectedRowKeys",selectedRowKeys)
-            // console.log("selectedRows",selectedRows)
+            console.log("selectedRowKeys",selectedRowKeys);
+            console.log("selectedRows",selectedRows);
+
             setSelectedRowKeys(selectedRowKeys);
             setSelectedRows(selectedRows)
             // setSelectedRowNames(getNameByIdFormDataSource(v[0]))
@@ -59,6 +60,16 @@ const TableTemplate = (props)=>{
         //     return record;
         // }
     };
+    //点击行单选,是单选
+    const onRowClick = (record)=>{ 
+        let new_keys = [];
+        let new_rows = [];
+        new_keys.push(record[rowKey]);
+        new_rows.push(record);
+        setSelectedRowKeys(new_keys);
+        setSelectedRows(new_rows); 
+    }
+  
 
     //处理排序的参数
     const handleSort = (sorter,queryInfo)=>{
@@ -200,6 +211,12 @@ const TableTemplate = (props)=>{
             <AiCard className="box-flex-grow-1">
                 <AiTable
                     rowSelection={rowSelection}
+                    onRow={record => {
+                        return {
+                          onClick: event => {onRowClick(record)}, // 点击行
+                        };
+                    }}
+                    // selectedRowKeys={['1']}
                     loading={loading}
                     dataSource={dataSource.data}
                     columns={columns}
