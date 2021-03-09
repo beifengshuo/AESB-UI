@@ -1,5 +1,5 @@
 import React from "react";
-import TabTemplate from '@/baseComponent/AiTab/TabTemplate';
+import TabTemplate from './TabTemplate';
 import EditTheme from './EditTheme';
 import AddTheme from './AddTheme';
 import ThemeList from './ThemeList';
@@ -14,16 +14,22 @@ const Theme = ()=>{
         comp:"ThemeList",
     }
     const add_pane= { 
-        title_suffix: `详细信息`,
-        tab_key: 'queueName', 
+        title: `新增`,
+        tab_key: 'AddTheme', 
         comp:"AddTheme",//必填   
+    }
+    const edit_pane= { 
+        title: `编辑`,
+        tab_key: 'EditTheme', 
+        comp:"EditTheme",//必填   
     }
     return (
         <>
-          <TabTemplate 
-            comp_data={comp_data} 
-            fixed_tab={fixed_tab} 
-            add_pane={add_pane}
+            <TabTemplate 
+                comp_data={comp_data} 
+                fixed_tab={fixed_tab} 
+                add_pane={add_pane}
+                edit_pane={edit_pane}
             />  
         </>
     )

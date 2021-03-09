@@ -2,8 +2,9 @@ import React from "react";
 import TableTemplate from '@/baseComponent/AiTable/TableTemplate';
 import AiButton from '@/baseComponent/AiButton';
 const ThemeList = (props)=>{
-    const {addTab} = props;
-    
+
+    const { addTab } = props; 
+
     const columns=[
         { title: '主题名', dataIndex: 'topicName', key:'topicName',ellipsis:true,},
         { title: '描述', dataIndex: 'description', key:'description',ellipsis:true, },
@@ -62,9 +63,8 @@ const ThemeList = (props)=>{
                 dataTable={dataTable}
                 // getTableData={(data)=>getList(data)}
             >
-                <AiButton onClick={()=>{console.log('新增')}}>新增</AiButton>
-                <AiButton onClick={()=>{console.log('编辑')}}>编辑</AiButton>
-                {/* <AiButton onClick={()=>{console.log('新增')}}>删除</AiButton> */}
+                <AiButton onClick={ ()=>{ addTab("add") }}>新增</AiButton>
+                <AiButton onClick={ ()=>{ addTab("edit")}}>编辑</AiButton>
             </TableTemplate>
           
         </>
