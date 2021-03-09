@@ -45,7 +45,7 @@ export const menu_data=[
                 ]
             },
             {
-                name:'3.5字段映射配置' , key:"字段映射配置", url:`/cache-settings`,comp:"FieldMapping",
+                name:'字段映射配置' , key:"字段映射配置", url:`/cache-settings`,comp:"FieldMapping",
                 breadcrumb_path:[
                     {name:"服务管理"},
                     {name:"字段映射配置",comp:"FieldMapping"},
@@ -130,7 +130,7 @@ export const menu_data=[
                 ]
             },
             {
-                name:'队列(3.5)' , key:"queue", 
+                name:'队列' , key:"queue", 
                 children:[
                     {
                         name:'本地队列' , key:"Local", url:`/cache-settings`,comp:"LocalQueue",
@@ -232,11 +232,11 @@ export const menu_data=[
             {name:'流程日志' , key:"流程日志", url:`/cache-settings`},
             {name:'调度日志' , key:"调度日志", url:`/cache-settings`},
             {name:'操作日志' , key:"操作日志", url:`/cache-settings`},
-            {name:'3.5域操作日志' , key:"域操作日志", url:`/cache-settings`},
-            {name:'3.5数据传输统计日志（流程）' , key:"数据传输统计日志（流程）", url:`/cache-settings`},
-            {name:'3.5数据传输统计日志（表）' , key:"数据传输统计日志（表）", url:`/cache-settings`},
-            {name:'3.5报文处理统计' , key:"报文处理统计", url:`/cache-settings`},
-            {name:'3.5报文处理查询' , key:"报文处理查询", url:`/cache-settings`},
+            {name:'域操作日志' , key:"域操作日志", url:`/cache-settings`},
+            {name:'数据传输统计日志（流程）' , key:"数据传输统计日志（流程）", url:`/cache-settings`},
+            {name:'数据传输统计日志（表）' , key:"数据传输统计日志（表）", url:`/cache-settings`},
+            {name:'报文处理统计' , key:"报文处理统计", url:`/cache-settings`},
+            {name:'报文处理查询' , key:"报文处理查询", url:`/cache-settings`},
             {
                 name:'日志清理' , key:"日志清理", 
                 children:[

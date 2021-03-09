@@ -1,9 +1,10 @@
 import React from "react";
 import TableTemplate from '@/baseComponent/AiTable/TableTemplate';
 import AiButton from '@/baseComponent/AiButton';
+import {message} from 'antd';
 const ThemeList = (props)=>{
 
-    const { addTab } = props; 
+    const { addTab, colseTab } = props; 
 
     const columns=[
         { title: '主题名', dataIndex: 'topicName', key:'topicName',ellipsis:true,},
@@ -63,8 +64,19 @@ const ThemeList = (props)=>{
                 dataTable={dataTable}
                 // getTableData={(data)=>getList(data)}
             >
-                <AiButton onClick={ ()=>{ addTab("add") }}>新增</AiButton>
-                <AiButton onClick={ ()=>{ addTab("edit")}}>编辑</AiButton>
+                <AiButton onClick={ ()=>{ addTab("add")}}>新增</AiButton>
+                <AiButton onClick={ ({selectedkeys})=>{
+                   
+                    if(selectedkeys.length==0){
+                        message.warning('请选择一条数据编辑');
+                        return false;
+                    }
+                    if(selectedkeys.length>1){
+                        message.warning('只能选择一条数据编辑');
+                        return false;
+                    }
+                    addTab("edit")
+                }} >编辑</AiButton>
             </TableTemplate>
           
         </>

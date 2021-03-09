@@ -1,9 +1,11 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useContext,createContext} from "react";
 import { Tabs } from 'antd';
 import './index.less';
 const { TabPane } = Tabs;
+export const TabContext = React.createContext({});
+
 const TabTemplate = ({comp_data,fixed_tab,add_pane,edit_pane})=>{
-    const { title_suffix="详细信息", tab_key='id', comp}=add_pane;
+
     const [panes,setPanes]=useState([
         { 
             title: 'tab1', 
@@ -48,48 +50,91 @@ const TabTemplate = ({comp_data,fixed_tab,add_pane,edit_pane})=>{
         // }  
     }
     const addButton = ()=>{
-        console.log('add_pane',add_pane);
+        let new_pane = [...panes];
+        const { title="add", tab_key='add', comp}=add_pane;
+        let new_activeKey =  tab_key;
+        if(panes.find((pane)=>pane.key=== new_activeKey )){//切换
+            setActiveKey(new_activeKey);
+        }else{
+            const new_add_pane= { 
+                title,
+                key: new_activeKey, 
+                closable: true,
+                comp,  
+            }
+            new_pane.push(new_add_pane);
+            setActiveKey(new_activeKey);
+            setPanes(new_pane); 
+        }
     }
     const editButton = ()=>{
-        console.log('edit_pane',edit_pane);
+        let new_pane = [...panes];
+        const { title="edit", tab_key='edit', comp}=edit_pane;
+        let new_activeKey =  tab_key;
+        if(panes.find((pane)=>pane.key=== new_activeKey )){//切换
+            setActiveKey(new_activeKey);
+        }else{
+            const new_add_pane= { 
+                title,
+                key: new_activeKey, 
+                closable: true,
+                comp,  
+            }
+            new_pane.push(new_add_pane);
+            setActiveKey(new_activeKey);
+            setPanes(new_pane); 
+        }
     }
 
     const remove = targetKey => {
-        // let new_activeKey = activeKey;
-        // let lastIndex;
+        console.log('remove',targetKey)
+        let new_activeKey = activeKey;
+        let lastIndex;
     
-        // panes.forEach((pane, i) => {
-        //   if (pane.key === targetKey) {
-        //     lastIndex = i - 1;
-        //   }
-        // });
+        panes.forEach((pane, i) => {
+          if (pane.key === targetKey) {
+            lastIndex = i - 1;
+          }
+        });
         
-        // const new_panes = panes.filter(pane => pane.key !== targetKey);
-        // if (new_panes.length && activeKey === targetKey) { 
-        //   if (lastIndex >= 0) {
-        //     new_activeKey = new_panes[lastIndex].key;
-        //   } else {
-        //     new_activeKey = new_panes[0].key;
-        //   }
-        // }
-        // setPanes(new_panes);
-        // setActiveKey(new_activeKey);  
+        const new_panes = panes.filter(pane => pane.key !== targetKey);
+        if (new_panes.length && activeKey === targetKey) { 
+          if (lastIndex >= 0) {
+            new_activeKey = new_panes[lastIndex].key;
+          } else {
+            new_activeKey = new_panes[0].key;
+          }
+        }
+        setPanes(new_panes);
+        setActiveKey(new_activeKey);  
     };
 
     const onTabEdit = (targetKey, action) => {
-       
-        // if(action=="remove"){
-        //     remove(targetKey);
-        // }
+        if(action=="remove"){
+            remove(targetKey);
+        }
     };
     useEffect(()=>{
         if(fixed_tab){  
-            setPanes( [{...panes[0],...fixed_tab}] )
+            setPanes( [{...panes[0],...fixed_tab}])
         }  
     },[])
 
+    const passContext = {
+        panes:'123',
+        activeKey:'111'
+    }
+    // {
+    //     panes,
+    //     activeKey,
+
+    //     setPanes,
+    //     setActiveKey,
+    // }
+
     return (
-        <>
+    
+        <TabContext.Provider value={passContext}>
             <Tabs
                 type="editable-card"
                 activeKey={activeKey}
@@ -105,13 +150,14 @@ const TabTemplate = ({comp_data,fixed_tab,add_pane,edit_pane})=>{
                     }
                     return(
                         <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>
-                            <CompPage addTab={addTab} />
+                            <CompPage addTab={addTab} colseTab={remove} />
                         </TabPane>
                     )
                 })
             }
             </Tabs>
-        </>
+            </TabContext.Provider>
+      
     )
 }
 export default TabTemplate;

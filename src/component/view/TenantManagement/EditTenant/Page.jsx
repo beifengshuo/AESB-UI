@@ -1,17 +1,6 @@
-// import React from 'react';
-// const EditTenantPage = (props) => {
-//     return (
-//         <>编辑页面</>
-//     );
-// };
-// export default EditTenantPage;
-
 import React ,{useState}from 'react';
 import { Form} from 'antd';
 import { useParams } from "react-router-dom";
-import PageForm from '@/baseComponent/AiForm/PageForm';
-import { editTenant , viewTenant} from '@/api/operate/tenantManagement';
-
 const item_list=[
     {
         label:'租户code',
@@ -79,18 +68,19 @@ const EditTenantPage = (props) => {
     }
 
     return(
-        <PageForm
-            title="编辑"
-            form={form}
-            form_item_list={itemList}
-            // colSpan={24} 
-            getData={()=>viewTenant(id)}
-            // handleChangeFormItemList={handleChangeFormItemList}
-            // handleChangeFormValues={handleChangeFormValues}
-            saveData = {(data)=>editTenant(data)}
-            saveFormSuccessFn={saveFormSuccessFn}
-            goback={saveFormSuccessFn}
-        /> 
+        <>遗留页面</>
+        // <PageForm
+        //     title="编辑"
+        //     form={form}
+        //     form_item_list={itemList}
+        //     // colSpan={24} 
+        //     getData={()=>viewTenant(id)}
+        //     // handleChangeFormItemList={handleChangeFormItemList}
+        //     // handleChangeFormValues={handleChangeFormValues}
+        //     saveData = {(data)=>editTenant(data)}
+        //     saveFormSuccessFn={saveFormSuccessFn}
+        //     goback={saveFormSuccessFn}
+        // /> 
     )
 };
 export default EditTenantPage;

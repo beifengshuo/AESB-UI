@@ -132,37 +132,45 @@ const TableTemplate = (props)=>{
     },[]);
 
     const RefQureyFilterForm = useRef();
-   
+
     return (
         <>
             <AiCard title={title}>
-                <div className="table-operate-wrap">
-                    <div className="table-button" >
+            {
+                    Array.isArray(buttons) && buttons.length==0
+                    ?
+                    <div style={{ padding:'10px 20px'}}>按钮区域</div>
+                    :
+                    Array.isArray(buttons) && buttons.length>0
+                    ?
+                    <div style={{ padding:'10px 20px'}}>
                         <Space align="center">
                             {
                                 renderButtonChildren()
                             }
                             {
-                                Array.isArray(buttons) && 
                                 buttons.map((button)=>{
                                     return<Button type="primary" key={button.key} disabled={true}>{button.title}</Button>
                                 })
                             }
                             {
                                 Array.isArray(searchs) &&
-                                <>
-                                    <Button type="primary" onClick={()=>{ RefQureyFilterForm.current.submit(); }}>查询</Button>
-                                    <Button type="primary" onClick={()=>{ 
-                                        const { params , ...rest }=queryInfo;
-                                        const new_query_info = {...rest,params:{}};
-                                        setQueryInfo(new_query_info);
-                                        RefQureyFilterForm.current.reset(); 
-                                    }}>重置</Button>
-                                </>   
+                                    <>
+                                        <Button type="primary" onClick={()=>{ RefQureyFilterForm.current.submit(); }}>查询</Button>
+                                        <Button type="primary" onClick={()=>{ 
+                                            const { params , ...rest }=queryInfo;
+                                            const new_query_info = {...rest,params:{}};
+                                            setQueryInfo(new_query_info);
+                                            RefQureyFilterForm.current.reset(); 
+                                        }}>重置</Button>
+                                    </>   
                             }
                         </Space>
+                        
                     </div>
-                </div>
+                    :
+                    null 
+                }
             </AiCard>
             <AiCard style={{width:'calc(100% - 20px)',marginLeft:'10px'}}>
                 {
