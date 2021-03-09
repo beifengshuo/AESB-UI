@@ -2,7 +2,6 @@ import React,{useContext} from "react";
 import AiCard from '@/baseComponent/AiCard';
 import {Button,Space,Form} from 'antd';
 import AiFromGrid  from '@/baseComponent/AiFromGrid';
-import AiTable from '@/baseComponent/AiTable';
 import TableTemplate from '@/baseComponent/AiTable/TableTemplate';
 
 import form_fields  from '../form_fields';
@@ -34,7 +33,6 @@ const AddTheme = ({ addTab, colseTab})=>{
             // {subName: "test", type: "Queue"},
             // {subName: "xhh1", type: "Topic"},
             // {subName: "xhh", type: "Topic"},
-
         ],
         total:0,
     }
@@ -44,9 +42,7 @@ const AddTheme = ({ addTab, colseTab})=>{
     ]
     return (
         <>
-            <AiCard 
-                // title="新增主题"
-            >
+            <AiCard>
                 <div style={{padding:20}}>
                     <Space align="center">
                         <SubscriberDialog/>

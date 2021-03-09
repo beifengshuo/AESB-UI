@@ -65,7 +65,7 @@ const ThemeList = (props)=>{
                 // getTableData={(data)=>getList(data)}
             >
                 <AiButton onClick={ ()=>{ addTab("add")}}>新增</AiButton>
-                <AiButton onClick={ ({selectedkeys})=>{
+                <AiButton onClick={ ({selectedkeys,selectedrows})=>{
                    
                     if(selectedkeys.length==0){
                         message.warning('请选择一条数据编辑');
@@ -75,7 +75,7 @@ const ThemeList = (props)=>{
                         message.warning('只能选择一条数据编辑');
                         return false;
                     }
-                    addTab("edit")
+                    addTab("edit",selectedrows[0])
                 }} >编辑</AiButton>
             </TableTemplate>
           

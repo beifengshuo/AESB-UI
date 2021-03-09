@@ -16,38 +16,17 @@ const TabTemplate = ({comp_data,fixed_tab,add_pane,edit_pane})=>{
 
     const [activeKey,setActiveKey]=useState('1');
 
-    const addTab = (type)=>{
+    const addTab = (type,row)=>{
         switch(type) {
             case 'add':
                 addButton();
                break;
             case 'edit':
-                editButton();
+                editButton(row);
                break;
             default:
                console.log("默认")
-        }
-        // let new_pane = [...panes];
-        // let new_activeKey =  row[tab_key];
-        // console.log("addTab",row);
-        // if(panes.find((pane)=>pane.key=== new_activeKey )){//切换
-        //     setActiveKey(new_activeKey);
-        //     console.log("new_activeKey",new_activeKey);
-        // }else{//添加
-
-        //     const new_add_pane= { 
-        //         title: `${new_activeKey}${title_suffix}`,
-        //         key: new_activeKey, 
-        //         closable: true,
-        //         comp,  
-        //     }
-
-        //     new_pane.push(new_add_pane);
-        //     console.log("new_activeKey",new_activeKey);
-
-        //     setActiveKey(new_activeKey);
-        //     setPanes(new_pane);
-        // }  
+        }  
     }
     const addButton = ()=>{
         let new_pane = [...panes];
@@ -67,15 +46,16 @@ const TabTemplate = ({comp_data,fixed_tab,add_pane,edit_pane})=>{
             setPanes(new_pane); 
         }
     }
-    const editButton = ()=>{
+    const editButton = (row)=>{ 
         let new_pane = [...panes];
-        const { title="edit", tab_key='edit', comp}=edit_pane;
-        let new_activeKey =  tab_key;
+        const { title="edit", tab_key='id', comp}=edit_pane;
+        let new_activeKey =  row[tab_key];
+        // let new_activeKey =  tab_key;
         if(panes.find((pane)=>pane.key=== new_activeKey )){//切换
             setActiveKey(new_activeKey);
         }else{
             const new_add_pane= { 
-                title,
+                title:`${new_activeKey}编辑`,
                 key: new_activeKey, 
                 closable: true,
                 comp,  
@@ -87,7 +67,7 @@ const TabTemplate = ({comp_data,fixed_tab,add_pane,edit_pane})=>{
     }
 
     const remove = targetKey => {
-        console.log('remove',targetKey)
+        console.log('remove',targetKey);
         let new_activeKey = activeKey;
         let lastIndex;
     
@@ -120,28 +100,14 @@ const TabTemplate = ({comp_data,fixed_tab,add_pane,edit_pane})=>{
         }  
     },[])
 
-    const passContext = {
-        panes:'123',
-        activeKey:'111'
-    }
-    // {
-    //     panes,
-    //     activeKey,
-
-    //     setPanes,
-    //     setActiveKey,
-    // }
-
     return (
-    
-        <TabContext.Provider value={passContext}>
-            <Tabs
-                type="editable-card"
-                activeKey={activeKey}
-                onChange={(key)=>{setActiveKey(key)}}
-                onEdit={onTabEdit}
-                hideAdd
-            >
+        <Tabs
+            type="editable-card"
+            activeKey={activeKey}
+            onChange={(key)=>{setActiveKey(key)}}
+            onEdit={onTabEdit}
+            hideAdd
+        >
             {
                 panes.map(pane =>{
                     let CompPage = ()=>(<>无此页面</>)
@@ -150,13 +116,12 @@ const TabTemplate = ({comp_data,fixed_tab,add_pane,edit_pane})=>{
                     }
                     return(
                         <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>
-                            <CompPage addTab={addTab} colseTab={remove} />
+                            <CompPage addTab={addTab} colseTab={remove} tab_key={activeKey} />
                         </TabPane>
                     )
                 })
             }
-            </Tabs>
-            </TabContext.Provider>
+        </Tabs>
       
     )
 }
